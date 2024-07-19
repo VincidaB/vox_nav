@@ -41,7 +41,7 @@ namespace vox_nav_navigators
 
       // Get the required items from the blackboard
       server_timeout_ =
-        config().blackboard->get<std::chrono::seconds>("server_timeout");
+        config().blackboard->template get<std::chrono::seconds>("server_timeout");
       getInput<std::chrono::seconds>("server_timeout", server_timeout_);
 
       // Initialize the input and output messages
@@ -242,9 +242,9 @@ namespace vox_nav_navigators
     void increment_recovery_count()
     {
       int recovery_count = 0;
-      config().blackboard->get<int>("number_recoveries", recovery_count); // NOLINT
+      config().blackboard->template get<int>("number_recoveries", recovery_count); // NOLINT
       recovery_count += 1;
-      config().blackboard->set<int>("number_recoveries", recovery_count); // NOLINT
+      config().blackboard->template set<int>("number_recoveries", recovery_count); // NOLINT
     }
 
     std::string action_name_;
